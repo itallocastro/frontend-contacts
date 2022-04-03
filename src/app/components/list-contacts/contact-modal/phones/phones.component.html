@@ -9,21 +9,27 @@
     </mat-panel-description>
   </mat-expansion-panel-header>
 
-  <mat-form-field appearance="standard">
-    <mat-label>Telefone</mat-label>
-    <input matInput [formControl]="phoneCurrent" [errorStateMatcher]="matcher" mask="(00) 00000-0000">
-    <mat-error *ngIf="phoneCurrent.hasError('required')">
-      O campo é <strong>obrigatório</strong>
-    </mat-error>
-  </mat-form-field>
-  <mat-checkbox class="whatsapp-checkbox" [formControl]="isWhatsappCurrent"><mat-icon class="icon-whatsapp">whatsapp</mat-icon></mat-checkbox>
+  <div class="container-input-phone">
+    <div class="responsive-input">
+      <mat-form-field appearance="standard">
+        <mat-label>Telefone</mat-label>
+        <input matInput [formControl]="phoneCurrent" [errorStateMatcher]="matcher" mask="(00) 00000-0000">
+        <mat-error *ngIf="phoneCurrent.hasError('required')">
+          O campo é <strong>obrigatório</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-checkbox class="whatsapp-checkbox" [formControl]="isWhatsappCurrent"><mat-icon class="icon-whatsapp">whatsapp</mat-icon></mat-checkbox>
+    </div>
 
-  <button mat-button color="primary"
-          [disabled]="disabledPhone(phoneCurrent)"
-          (click)="addPhone()"
-  >
-    Adicionar
-  </button>
+    <div class="button-input-phone">
+      <button mat-button color="primary"
+              [disabled]="disabledPhone(phoneCurrent)"
+              (click)="addPhone()"
+      >
+        Adicionar
+      </button>
+    </div>
+  </div>
 
   <div class="list-contacts">
     <div class="empty" *ngIf="contact.phones.length === 0">
