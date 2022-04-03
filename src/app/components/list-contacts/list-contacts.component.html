@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="button-container">
+    <button mat-raised-button color="primary" (click)="addContact()">Adicionar Contato</button>
+  </div>
+  <div class="list-contacts" *ngIf="contacts$ | async; else loading">
+    <mat-list *ngFor="let contact of (contacts$ | async)">
+      <mat-list-item>
+        <div class="contact-container">
+          <div class="data-contact">
+            <mat-icon color="primary">account_circle</mat-icon>
+            <span class="contact-name">{{contact.name}}</span>
+          </div>
+          <div>
+            <mat-icon class="button-icon" color="primary" (click)="editContact(contact)">edit</mat-icon>
+            <mat-icon class="button-icon" color="warn" (click)="removeContact(contact)">delete</mat-icon>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="container-loading">
+    <mat-spinner diameter="80"></mat-spinner>
+  </div>
+</ng-template>

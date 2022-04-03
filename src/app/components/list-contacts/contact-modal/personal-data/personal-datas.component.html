@@ -1,0 +1,24 @@
+<mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Dados Pessoais
+    </mat-panel-title>
+    <mat-panel-description>
+      Digite os dados pessoais
+      <mat-icon>account_circle</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Nome</mat-label>
+    <input matInput [formControl]="nameCurrent" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="nameCurrent.hasError('required')">
+      O campo é <strong>obrigatório</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-action-row>
+    <button mat-button color="primary" (click)="nextStep()">Próximo</button>
+    <button mat-button color="accent" *ngIf="contact.id" (click)="editName()" [disabled]="disabledName()">Salvar</button>
+  </mat-action-row>
+</mat-expansion-panel>

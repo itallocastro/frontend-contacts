@@ -1,0 +1,79 @@
+<mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Telefones
+    </mat-panel-title>
+    <mat-panel-description>
+      Insira os telefones
+      <mat-icon>contact_phone</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Telefone</mat-label>
+    <input matInput [formControl]="phoneCurrent" [errorStateMatcher]="matcher" mask="(00) 00000-0000">
+    <mat-error *ngIf="phoneCurrent.hasError('required')">
+      O campo é <strong>obrigatório</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-checkbox class="whatsapp-checkbox" [formControl]="isWhatsappCurrent"><mat-icon class="icon-whatsapp">whatsapp</mat-icon></mat-checkbox>
+
+  <button mat-button color="primary"
+          [disabled]="disabledPhone(phoneCurrent)"
+          (click)="addPhone()"
+  >
+    Adicionar
+  </button>
+
+  <div class="list-contacts">
+    <div class="empty" *ngIf="contact.phones.length === 0">
+      Sem telefones cadastrados
+    </div>
+    <mat-list *ngFor="let phone of contact.phones; let i = index">
+      <mat-list-item>
+        <div class="phone-container" *ngIf="openEdition !== i">
+          <div class="data-contact">
+                <span class="contact-name">
+                  {{phone.phoneNumber | mask: '(00) 00000-0000'}}
+                  <mat-icon *ngIf="phone.isWhatsapp" style="padding-left: 5px">whatsapp</mat-icon>
+                </span>
+          </div>
+          <div>
+            <button mat-icon-button (click)="setEdition(i, phone)">
+              <mat-icon color="primary">edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="removePhone(phone, i)">
+              <mat-icon color="warn">delete</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="phone-container" *ngIf="openEdition === i">
+          <div class="data-contact">
+            <mat-form-field appearance="standard">
+              <mat-label>Telefone</mat-label>
+              <input matInput [formControl]="editPhoneControl" [errorStateMatcher]="matcher" mask="(00) 00000-0000">
+            </mat-form-field>
+            <mat-checkbox class="whatsapp-checkbox" [formControl]="editPhoneWhatsappControl"><mat-icon class="icon-whatsapp">whatsapp</mat-icon></mat-checkbox>
+          </div>
+          <div>
+            <button mat-icon-button (click)="resetEdition()">
+              <mat-icon color="warn">cancel</mat-icon>
+            </button>
+            <button mat-icon-button
+                    [disabled]="disabledPhone(editPhoneControl)
+                    || (editPhoneControl.value === phone.phoneNumber && editPhoneWhatsappControl.value === phone.isWhatsapp)"
+                    (click)="editPhone(phone, i)"
+                    >
+              <mat-icon color="primary">check</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </div>
+
+  <mat-action-row>
+    <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+  </mat-action-row>
+</mat-expansion-panel>

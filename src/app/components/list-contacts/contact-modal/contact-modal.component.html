@@ -1,0 +1,37 @@
+<h2>{{contact.id ? 'Editar ' : 'Adicionar'}} Contato</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-accordion>
+    <app-personal-data
+      [contact]="contact"
+      [step]="step"
+      [nextStep]="nextStep"
+      [setStep]="setStep"
+      [nameCurrent]="nameCurrent"
+      [matcher]="matcher"></app-personal-data>
+
+    <app-emails
+      [contact]="contact"
+      [step]="step"
+      [nextStep]="nextStep"
+      [setStep]="setStep"
+      [prevStep]="prevStep"
+      [emailCurrent]="emailCurrent"
+      [matcher]="matcher"></app-emails>
+
+    <app-phones
+      [contact]="contact"
+      [step]="step"
+      [nextStep]="nextStep"
+      [setStep]="setStep"
+      [prevStep]="prevStep"
+      [phoneCurrent]="phoneCurrent"
+      [isWhatsappCurrent]="isWhatsappCurrent"
+      [matcher]="matcher">
+
+    </app-phones>
+  </mat-accordion>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="primary" mat-dialog-close>Voltar</button>
+  <button mat-raised-button color="accent" *ngIf="!contact.id" [disabled]="!nameCurrent.value" (click)="addContact()">Adicionar</button>
+</mat-dialog-actions>

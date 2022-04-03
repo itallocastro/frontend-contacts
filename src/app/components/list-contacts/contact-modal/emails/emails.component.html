@@ -1,0 +1,73 @@
+<mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Emails
+    </mat-panel-title>
+    <mat-panel-description>
+      Insira os emails
+      <mat-icon>alternate_email</mat-icon>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput [formControl]="emailCurrent" [errorStateMatcher]="matcher">
+    <mat-error *ngIf="emailCurrent.hasError('email') && !emailCurrent.hasError('required')">
+      Digite um email válido.
+    </mat-error>
+    <mat-error *ngIf="emailCurrent.hasError('required')">
+      O campo é <strong>obrigatório</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-button color="primary"
+          [disabled]="disabledEmail(emailCurrent)"
+          (click)="addEmail()"
+  >
+    Adicionar
+  </button>
+
+  <div class="list-contacts">
+    <div class="empty" *ngIf="contact.emails.length === 0">
+      Sem emails cadastrados
+    </div>
+    <mat-list *ngFor="let email of contact.emails; let i = index">
+      <mat-list-item>
+        <div class="email-container" *ngIf="openEdition !== i">
+          <div class="data-contact">
+            <span class="contact-name">{{email.name}}</span>
+          </div>
+          <div>
+            <button mat-icon-button (click)="setEdition(i, email)">
+              <mat-icon color="primary">edit</mat-icon>
+            </button>
+            <button mat-icon-button>
+              <mat-icon color="warn" (click)="removeContact(email, i)">delete</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="email-container" *ngIf="openEdition === i">
+          <div class="data-contact">
+            <mat-form-field appearance="standard">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput [formControl]="editEmailControl" [errorStateMatcher]="matcher">
+            </mat-form-field>
+          </div>
+          <div>
+            <button mat-icon-button (click)="resetEdition()">
+              <mat-icon color="warn">cancel</mat-icon>
+            </button>
+            <button mat-icon-button [disabled]="disabledEmail(editEmailControl) || editEmailControl.value === email.name" (click)="editEmail(email, i)">
+              <mat-icon color="primary">check</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </div>
+  <mat-action-row>
+    <button mat-button color="warn" (click)="prevStep()">Anterior</button>
+    <button mat-button color="primary" (click)="nextStep()">Próximo</button>
+  </mat-action-row>
+</mat-expansion-panel>
