@@ -1,27 +1,36 @@
-# Frontend
+# Frontend Test Bravi
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
+## Execução via heroku
 
-## Development server
+O teste está hospedado na heroku e pode ser acessado por esse link: https://frontend-test-bravi.herokuapp.com/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Rodar via docker
+### Requisitos:
+- Você deve ter o backend instalado localmente ou via docker.
+<br>
+<br>
+Você deve clonar o repositório `git clone https://github.com/itallocastro/test-bravi-frontend.git`
+<br>
+<br>
+Depois você deve acessar a pasta do projeto e rodar: `docker build -t frontend-test-bravi .`
+<br>
+<br>
+Após isso, você rodar `docker run -d -p 4200:80 frontend-test-bravi`
+<br>
+<br>
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Rodar localmente
+### Requisitos:
+- Node version: 12.x.x
+- Angular-cli: 11.x.x
+<br>
+<br>
+Você deve clonar o repositório `git clone https://github.com/itallocastro/test-bravi-frontend.git`
+<br>
+<br>
+Depois você deve acessar a pasta do projeto e rodar: `npm install`
+<br>
+<br>
+Depois você deve rodar: `ng serve` e a porta padrão será a 4200.
+<br>
+<br>
