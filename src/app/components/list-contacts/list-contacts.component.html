@@ -2,7 +2,7 @@
   <div class="button-container">
     <button mat-raised-button color="primary" (click)="addContact()">Adicionar Contato</button>
   </div>
-  <div *ngIf="(contacts$ | async).length === 0">
+  <div *ngIf="(contacts$ | async)?.length === 0">
     Sem contatos cadastrados
   </div>
   <div class="list-contacts" *ngIf="contacts$ | async; else loading">
