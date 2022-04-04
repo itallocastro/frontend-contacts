@@ -6,3 +6,25 @@
   text-align: center;
   margin-top: 10px;
 }
+.container-input-phone {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+@media only screen and (max-width: 450px) {
+  .container-input-phone .responsive-input {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .mat-form-field {
+      width: 80%;
+    }
+  }
+  .container-input-phone .button-input-phone {
+    display: flex;
+    width: 100%;
+    justify-content: right;
+  }
+}
+

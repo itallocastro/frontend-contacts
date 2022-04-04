@@ -116,7 +116,7 @@ export class PhonesComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
-  removePhone(phone: Phone, index: number) {
+  removePhone(phone: Phone, index: number): void {
     if (this.contact.id) {
       const dialogRef = this.dialog.open(ConfirmModalComponent, {data: {text: 'Você realmente deseja excluir esse telefone ?'}});
       this.dialogSubscription = dialogRef.afterClosed().subscribe((value) => {

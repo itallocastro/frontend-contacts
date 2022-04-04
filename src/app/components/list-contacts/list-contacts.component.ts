@@ -30,7 +30,6 @@ export class ListContactsComponent implements OnInit {
     this.dialogSubscribe = dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.contacts$ = this.contactsService.getAllList();
-        this.snackBarService.openSnackBar('Contato adicionado com sucesso!', 3, 'success-snack');
       }
       this.dialogSubscribe.unsubscribe();
     });

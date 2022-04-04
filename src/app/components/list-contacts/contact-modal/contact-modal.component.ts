@@ -8,6 +8,7 @@ import {Method} from '../../../models/operation.model';
 import {EmailService} from '../../../services/email.service';
 import {Observable, Subscription} from 'rxjs';
 import {PhoneService} from '../../../services/phone.service';
+import {SnackBarService} from '../../../services/snack-bar.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -40,6 +41,7 @@ export class ContactModalComponent implements OnInit, OnDestroy, OnChanges {
   constructor(public dialogRef: MatDialogRef<ContactModalComponent>,
               private contactsService: ContactsService,
               private changeDetectorRef: ChangeDetectorRef,
+              private snackBarService: SnackBarService,
               @Inject(MAT_DIALOG_DATA) public data: Contact,
               ) {
   }
@@ -65,7 +67,13 @@ export class ContactModalComponent implements OnInit, OnDestroy, OnChanges {
     this.contact.name = this.nameCurrent.value;
     this.contactSubscription = this.contactsService.addContact(this.contact).subscribe((contact) => {
       this.dialogRef.close(contact);
-    }, (err) => console.log(err));
+    }, (err) => {
+      this.contactsService.setLoadingOperation(false);
+      this.snackBarService.openSnackBar('Erro ao adicionar o contato!', 3, 'success-snack');
+    }, () => {
+      this.contactsService.setLoadingOperation(false);
+      this.snackBarService.openSnackBar('Contato adicionado com sucesso!', 3, 'success-snack');
+    });
   }
 
   setStep = (index: number): void => {
