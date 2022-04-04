@@ -26,5 +26,12 @@
     width: 100%;
     justify-content: right;
   }
+  .edit-input {
+    overflow-x: auto;
+    .edit-input-actions {
+      display: flex;
+      margin-left: 10px;
+    }
+  }
 }
 

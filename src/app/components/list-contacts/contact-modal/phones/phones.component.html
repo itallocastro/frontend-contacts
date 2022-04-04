@@ -53,7 +53,7 @@
             </button>
           </div>
         </div>
-        <div class="phone-container" *ngIf="openEdition === i">
+        <div class="phone-container edit-input" *ngIf="openEdition === i">
           <div class="data-contact">
             <mat-form-field appearance="standard">
               <mat-label>Telefone</mat-label>
@@ -61,7 +61,7 @@
             </mat-form-field>
             <mat-checkbox class="whatsapp-checkbox" [formControl]="editPhoneWhatsappControl"><mat-icon class="icon-whatsapp">whatsapp</mat-icon></mat-checkbox>
           </div>
-          <div>
+          <div class="edit-input-actions">
             <button mat-icon-button (click)="resetEdition()">
               <mat-icon color="warn">cancel</mat-icon>
             </button>
