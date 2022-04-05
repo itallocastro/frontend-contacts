@@ -6,7 +6,7 @@
     "start": "node server.js",
     "build": "ng build",
     "heroku-postbuild": "ng build --prod",
-    "test": "ng test",
+    "test": "ng test --watch=false --browsers=ChromeHeadlessNoSandbox --progress=true --codeCoverage=true",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

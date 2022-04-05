@@ -1,12 +1,12 @@
 export class Email {
   id?: string;
-  personId: string;
+  personId?: string;
   name: string;
 }
 
 export class Phone {
   id?: string;
-  personId: string;
+  personId?: string;
   phoneNumber: string;
   isWhatsapp: boolean;
 }

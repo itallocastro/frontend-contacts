@@ -26,7 +26,6 @@ export class PersonalDataComponent implements OnInit, OnDestroy {
   @Input()
   nextStep: () => void;
 
-
   @Input()
   nameCurrent: FormControl;
 

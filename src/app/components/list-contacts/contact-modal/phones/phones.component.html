@@ -13,12 +13,12 @@
     <div class="responsive-input">
       <mat-form-field appearance="standard">
         <mat-label>Telefone</mat-label>
-        <input matInput [formControl]="phoneCurrent" [errorStateMatcher]="matcher" mask="(00) 00000-0000">
+        <input matInput [formControl]="phoneCurrent" ngDefaultControl [errorStateMatcher]="matcher" mask="(00) 00000-0000">
         <mat-error *ngIf="phoneCurrent.hasError('required')">
           O campo é <strong>obrigatório</strong>
         </mat-error>
       </mat-form-field>
-      <mat-checkbox class="whatsapp-checkbox" [formControl]="isWhatsappCurrent"><mat-icon class="icon-whatsapp">whatsapp</mat-icon></mat-checkbox>
+      <mat-checkbox class="whatsapp-checkbox" ngDefaultControl [formControl]="isWhatsappCurrent"><mat-icon class="icon-whatsapp">whatsapp</mat-icon></mat-checkbox>
     </div>
 
     <div class="button-input-phone">
