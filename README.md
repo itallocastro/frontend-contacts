@@ -32,3 +32,6 @@ Depois você deve acessar a pasta do projeto e rodar: `npm install`
 Depois você deve rodar: `ng serve` e a porta padrão será a 4200.
 <br>
 <br>
+
+## Testes unitários
+Alguns testes unitários foram adicionados, como por exemplo nos services e em alguns componentes, como: list-contacts, contact-modal. Os testes aplicados nesses componentes se aplicariam de forma similar no restantes dos componentes.
