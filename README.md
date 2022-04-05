@@ -7,8 +7,7 @@ O teste está hospedado na heroku e pode ser acessado por esse link: https://fro
 ## Rodar via docker
 ### Requisitos:
 - Você deve ter o backend instalado localmente ou via docker.
-<br>
-<br>
+
 Você deve clonar o repositório `git clone https://github.com/itallocastro/test-bravi-frontend.git`
 <br>
 <br>
@@ -23,8 +22,7 @@ Após isso, você rodar `docker run -d -p 4200:80 frontend-test-bravi`
 ### Requisitos:
 - Node version: 12.x.x
 - Angular-cli: 11.x.x
-<br>
-<br>
+
 Você deve clonar o repositório `git clone https://github.com/itallocastro/test-bravi-frontend.git`
 <br>
 <br>
