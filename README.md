@@ -1,4 +1,4 @@
-# Frontend Test Bravi
+# Frontend Contatos
 
 ## Execução via heroku
 
@@ -8,7 +8,7 @@ O teste está hospedado na heroku e pode ser acessado por esse link: https://fro
 ### Requisitos:
 - Você deve ter o backend instalado localmente ou via docker.
 
-Você deve clonar o repositório `git clone https://github.com/itallocastro/test-bravi-frontend.git`
+Você deve clonar o repositório `git clone https://github.com/itallocastro/frontend-contacts.git`
 <br>
 <br>
 Depois você deve acessar a pasta do projeto e rodar: `docker build -t frontend-test-bravi .`
